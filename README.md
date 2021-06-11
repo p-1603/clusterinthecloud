@@ -20,13 +20,13 @@ https://ambermd.org/InstCentOS.php
 7) Add users via the command `/usr/local/sbin/add_user_ldap username firstname lastname publickey`.
 8) Et voilà. Use `sinfo` or `list_nodes` to see the nodes and check slurm is working.
 
-*** This step is currently broken and the setup does not complete, due to a faulty installaion of `libpmi`. A way around this problem is to comment out the `- security_udpates` role line in `/home/citc/citc-ansible/management.yml` and run `/home/citc/run_ansible` manually. It will hang at "Wait for packer to finish", but the setup will otherwise be complete, and you can CTRL+C here. Create the empty `mgmt` file in `/mnt/shared/finalised/` manually and you will then be able to run `finish`.
+*** This step is currently broken and the setup does not complete, due to a faulty installaion of `libpmi`. A way around this problem is to comment out the `- security_udpates` role line in `/home/citc/citc-ansible/management.yml` and run `/home/citc/run_ansible` manually. It will hang at "wait for packer to finish", but the setup will otherwise be complete, and you can CTRL+C here. Create the empty `mgmt` file in `/mnt/shared/finalised/` manually and you will then be able to run `finish`.
 
 ## Installing Amber & OpenMPI
 
 1) Upload the AmberTools tarball to `/mnt/shared/` and untar it. 
 2) Install the dependencies listed under https://ambermd.org/InstCentOS.php. Also use `yum` to install `cmake`. 
-3) From the Amber docs, the `yum` version of OpenMPI is known to be incompatible with Amber and must be installed manually. Untar the openMPI tarball in `/amber_src/AmberTools/src/`. Then, run `configure_openmpi`, making sure that you install it somewhere in `/mnt/shared/` so that all users have access to it.
+3) From the Amber docs, the `yum` version of OpenMPI is known to be incompatible with Amber and must be installed manually. Untar the OpenMPI tarball in `/amber_src/AmberTools/src/`. Then, run `configure_openmpi`, making sure that you install it somewhere in `/mnt/shared/` so that all users have access to it.
 4) Add OpenMPI's `bin` directory to the `PATH` and OpenMPI's `lib` directory to `LD_LIBRARY_PATH`.
 5) Set the `-DMPI` flag in `amber_src/AmberTools/build/run_cmake` is set to `TRUE`. Run `run_cmake`.
 6) Once the `cmake` build is complete, run `make install`.
