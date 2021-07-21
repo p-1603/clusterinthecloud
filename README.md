@@ -29,7 +29,7 @@ https://ambermd.org/InstCentOS.php
 2) Install the dependencies listed under https://ambermd.org/InstCentOS.php. Also use `yum` to install `cmake` (Oracle Linux version 8 or higher). 
 3) From the Amber docs, the `yum` version of OpenMPI is known to be incompatible with Amber and must be installed manually. Untar the OpenMPI tarball in `/amber_src/AmberTools/src/`. Then, run `configure_openmpi`, making sure that you install it somewhere in `/mnt/shared/` so that all users have access to it.
 4) Add OpenMPI's `bin` directory to the `PATH` and OpenMPI's `lib` directory to `LD_LIBRARY_PATH`.
-5) Set the `-DMPI` flag in `amber_src/AmberTools/build/run_cmake` is set to `TRUE`. Run `run_cmake`.
+5) Set the `-DMPI` flag in `amber_src/build/run_cmake` is set to `TRUE`. Run `run_cmake`.
 6) Once the Cmake build is complete, run `make install`.
 7) Add the directory containing `amber.sh` to the `PATH` and `source` the `amber.sh` script.
 8) Add the environment and path variables above to users' `.bashrc`and to `/home/citc/compute_image_extra.sh` (which builds the node images) to allow users to submit jobs without needing to faff with paths in their .slm files.
